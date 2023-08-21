@@ -1,0 +1,2 @@
+# samary
+inspire by summaly
