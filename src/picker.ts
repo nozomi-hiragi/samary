@@ -82,13 +82,17 @@ const pickActivityPub = ($: cheerio.CheerioAPI) =>
 const pickupSamary = async (
   url: URL,
   language?: string,
+  options?: { userAgent?: string },
 ): Promise<Samary> => {
   if (
     language &&
     !/^(([a-zA-Z]{2}|\*)(-[a-zA-Z]{2})?(;q\=\d.\d)?(\s?,\s?)?)+$/.test(language)
   ) language = undefined;
 
-  const $ = await fetchDocument(url.href, { language });
+  const $ = await fetchDocument(url.href, {
+    language,
+    userAgent: options?.userAgent,
+  });
 
   const siteName = pickSiteName($) || url.hostname;
   const title = trimTitle(pickTitle($), siteName) || siteName;

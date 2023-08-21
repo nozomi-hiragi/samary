@@ -28,6 +28,7 @@ export const samary = async (
   options?: {
     language?: string;
     plugins?: Plugin[];
+    userAgent?: string;
   },
 ): Promise<Result> => {
   const urlInstance = new URL(url);
@@ -38,5 +39,6 @@ export const samary = async (
   return await (match ? match.summarize : general)(
     urlInstance,
     options?.language,
+    options,
   ).then((res) => ({ ...res, url }));
 };
