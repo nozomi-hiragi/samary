@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "samary": "deno eval \"await import('./src/samary.ts').then(({samary})=>Deno.args.forEach(async(v)=>await samary(v).then((res)=>console.log(res))))\""
+  }
+}
